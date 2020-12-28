@@ -1,0 +1,19 @@
+{
+  "name": "node_file_be",
+  "version": "1.0.0",
+  "description": "Basic Node.js back end for file management.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MMGroesbeck/Node_File_BE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MMGroesbeck/Node_File_BE/issues"
+  },
+  "homepage": "https://github.com/MMGroesbeck/Node_File_BE#readme"
+}
