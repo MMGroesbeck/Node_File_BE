@@ -4,22 +4,23 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 // Middleware:
+const authRequired = require("./middleware/authenticator.js");
 
 // Routers:
-const userRouter = require('./routes/user');
-const imageRouter = require('./routes/image');
+const userRouter = require("./routes/user");
+const imageRouter = require("./routes/image");
 
 const server = express();
 
 server.use(helmet());
 server.use(
-    cors({
-      origin: '*',
-    })
-  );
+  cors({
+    origin: "*",
+  })
+);
 
-server.use('/api/user', userRouter);
-server.use('/api/image', imageRouter);
+server.use("/api/user", userRouter);
+server.use("/api/image", authRequired, imageRouter);
 
 server.get("/api", (req, res) => {
   const message = process.env.MESSAGE || "'/' root endpoint is up.";
