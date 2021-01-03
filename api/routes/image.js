@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const fs = require("fs");
 
-const authenticator = require("./middleware/authenticator");
-
 const File = require("../models/fileModel");
 const Image = require("../models/imageModel");
 
@@ -51,7 +49,7 @@ router.get("/:id", (req, res) => {
     Image.findById(id)
         .then(img => {
             if (img.public || img.user_id === req.decodedToken.userId) {
-                res.download("/images" + id, id, err => {
+                res.download("/images" + img.file_uuid, id, err => {
                     if (err) {
                         res.status(500).json({ error: err });
                     }
