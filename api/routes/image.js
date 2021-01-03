@@ -65,6 +65,18 @@ router.get("/:id", (req, res) => {
         })
 })
 
+router.get("/", (req, res) => {
+    const filter = req.body.filter;
+    Image.findBy(filter)
+        .then(images => {
+            const sendable = images.filter(i => (i.public || i.user_id === req.decodedToken.userId));
+            res.status(200).json({ images: sendable });
+        })
+        .catch(err => {
+            res.status(500).json({ message: err.message });
+        })
+})
+
 router.delete("/:id", (req, res) => {
     const id = req.params.id;
     Image.findById(id)
