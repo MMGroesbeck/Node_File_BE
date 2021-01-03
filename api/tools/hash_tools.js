@@ -4,8 +4,8 @@ module.exports = {
     hasher
 }
 
-function hasher(pin) {
+function hasher(hashable) {
     const rounds = process.env.HASH_ROUNDS || 12;
-    const hash = bcrypt.hashSync(pin, rounds);
+    const hash = bcrypt.hashSync(hashable, rounds);
     return hash;
 }
